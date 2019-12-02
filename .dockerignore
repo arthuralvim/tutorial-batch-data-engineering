@@ -1,0 +1,6 @@
+.*
+!.coveragerc
+!.env
+!.pylintrc
+Dockerfile
+README.md

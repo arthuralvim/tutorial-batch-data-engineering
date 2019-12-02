@@ -1,0 +1,46 @@
+# travis-ci jurimetria
+
+sudo: required
+
+language: python
+
+python:
+  - 3.7.0
+
+services:
+  - docker
+
+before_install:
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH, TRAVIS_TAG=$TRAVIS_TAG"
+  - pip install --upgrade pip==19.1.1
+  - pip install pipenv
+  - sudo rm -f /etc/boto.cfg
+  - pipenv install --system --dev
+  - make pep8
+
+install:
+  - echo "nothing else to install!"
+
+script:
+  - make test
+
+after_script:
+  - set -e
+  - coveralls
+  - docker --version
+  - export PATH=$PATH:$HOME/.local/bin # put aws in the path
+  - make docker.login
+  - make docker.build
+  - make docker.push
+
+after_failure:
+  - if [ -f log/tests.log ]; then cat log/tests.log && sleep 5; fi
+  - echo "== End of CI Log ==""
+
+cache:
+  directories:
+    - $HOME/.cache/.pip
+    - $HOME/.cache/.pipenv
+
+notifications:
+  email: false

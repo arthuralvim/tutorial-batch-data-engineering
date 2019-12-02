@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+coverage = "*"
+coveralls = "*"
+ipdb = "*"
+ipython = "==7.0.0"
+jupyter = "*"
+pep8 = "*"
+pre-commit = "*"
+pycodestyle = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+pytest-sugar = "*"
+
+[packages]
+awscli = "*"
+boto3 = "*"
+python-decouple = "*"
+watchtower = "*"
+
+[requires]
+python_version = "3.7.0"
