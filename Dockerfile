@@ -15,7 +15,7 @@ ENV PIPENV_CACHE_DIR $WORKDIR/.pipenv
 ENV PIPENV_PYTHON ${PYENV_ROOT}/shims/python
 ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 ENV BUILD_PACKAGES bzip2-devel gcc git wget which make \
-                   openssl-devel python37-dev readline-devel postgresql-devel \
+                   openssl-devel readline-devel postgresql-devel \
                    libffi-devel sqlite-devel tar
 
 WORKDIR ${WORKDIR}
